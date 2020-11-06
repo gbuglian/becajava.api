@@ -11,14 +11,6 @@ public class Banda {
 	private String Nome;
 	private String Estilo;
 	
-	@ManyToOne
-	@JoinColumn(name = "CasaShowId")
-	private CasaShow casaShow;
-	
-	@ManyToOne
-	@JoinColumn(name = "LocalizacaoId")
-	private Localizacao localizacao;
-	
 	public Long getId() {
 		return Id;
 	}

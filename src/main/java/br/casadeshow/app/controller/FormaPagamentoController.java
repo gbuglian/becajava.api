@@ -7,22 +7,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.casadeshow.app.model.Banda;
-import br.casadeshow.app.service.BandaService;
+import br.casadeshow.app.model.FormaPagamento;
+import br.casadeshow.app.service.FormaPagamentoService;
 
 @RestController
-@RequestMapping("/bandas")
-public class BandaController {
+@RequestMapping("/FormasPagamentos")
+public class FormaPagamentoController {
 
 	@Autowired
-	private BandaService service;
+	private FormaPagamentoService service;
 
 	@PostMapping
-	public ResponseEntity inserir(@RequestBody Banda banda) {
+	public ResponseEntity inserir(@RequestBody FormaPagamento formaPagamento) {
 
 		try {
-			service.inserir(banda);
-			return ResponseEntity.status(HttpStatus.CREATED).body("Banda inserido com sucesso!");
+			service.inserir(formaPagamento);
+			return ResponseEntity.status(HttpStatus.CREATED).body("Forma de Pagamento inserido com sucesso!");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro na aplicação!");
 		}
@@ -32,8 +32,8 @@ public class BandaController {
 	public ResponseEntity listar() {
 
 		try {
-			Iterable<Banda> bandas = service.listar();
-			return ResponseEntity.status(HttpStatus.OK).body(bandas);
+			Iterable<FormaPagamento> formaPagamento = service.listar();
+			return ResponseEntity.status(HttpStatus.OK).body(formaPagamento);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro na aplicação!");
 		}
@@ -43,8 +43,8 @@ public class BandaController {
 	public ResponseEntity obter(@PathVariable Long id) {
 
 		try {
-			Optional<Banda> banda = service.obter(id);
-			return ResponseEntity.status(HttpStatus.OK).body(banda);
+			Optional<FormaPagamento> formaPagamento = service.obter(id);
+			return ResponseEntity.status(HttpStatus.OK).body(formaPagamento);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro na aplicação!");
 		}
@@ -52,10 +52,10 @@ public class BandaController {
 	}
 
 	@PutMapping(path = "/{id}")
-	public ResponseEntity atualizar(@RequestBody Banda banda, @PathVariable Long id) {
+	public ResponseEntity atualizar(@RequestBody FormaPagamento formaPagamento, @PathVariable Long id) {
 		try {
-			service.atualizar(banda, id);
-			return ResponseEntity.status(HttpStatus.OK).body("Banda atualizada com sucesso!");
+			service.atualizar(formaPagamento, id);
+			return ResponseEntity.status(HttpStatus.OK).body("Forma de Pagamento atualizada com sucesso!");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro na aplicação!");
 		}
@@ -71,5 +71,3 @@ public class BandaController {
 		}
 	}
 }
-
-

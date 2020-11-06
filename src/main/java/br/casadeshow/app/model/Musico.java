@@ -15,6 +15,7 @@ public class Musico {
 	private Long Id;
 	private String Nome;
 	private String Instrumento;
+	private String Nacionalidade;
 	
 	@ManyToOne
 	@JoinColumn(name = "BandaId")
@@ -42,6 +43,14 @@ public class Musico {
 
 	public void setInstrumento(String instrumento) {
 		Instrumento = instrumento;
+	}
+	
+	public String getNacionalidade() {
+		return Nacionalidade;
+	}
+
+	public void setNacionalidade(String nacionalidade) {
+		Nacionalidade = nacionalidade;
 	}
 
 	public Banda getBanda() {

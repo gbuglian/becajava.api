@@ -1,6 +1,7 @@
 package br.casadeshow.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,25 @@ public class CasaShowService {
 	private CasaShowRepository _repository;
 	
 	public void inserir(CasaShow casaShow) {
-		casaShow.setId(0L);
+		casaShow.setId(new Long (0));
 		_repository.save(casaShow);		
 	}
 
 	public List<CasaShow> listar(){	
 		return _repository.findAll();
 	}
+	
+	public Optional<CasaShow> obter(Long id){
+		return _repository.findById(id);
+	}
+	
+	public void atualizar(CasaShow casaShow,Long id) {
+		casaShow.setId(id);
+		_repository.save(casaShow);
+	}
+
+	public void deletar(Long id) {
+		_repository.deleteById(id);
+	}
+	
 }

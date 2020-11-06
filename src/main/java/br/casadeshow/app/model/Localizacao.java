@@ -8,6 +8,7 @@ public class Localizacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
+	private String Cidade;
 	private String Estado;
 
 	public Long getId() {
@@ -16,6 +17,14 @@ public class Localizacao {
 
 	public void setId(Long id) {
 		Id = id;
+	}
+	
+	public String getCidade() {
+		return Cidade;
+	}
+
+	public void setCidade(String cidade) {
+		Cidade = cidade;
 	}
 
 	public String getEstado() {
